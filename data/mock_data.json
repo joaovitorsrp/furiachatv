@@ -1,0 +1,24 @@
+{
+  "live_status": [
+    { "jogo": "CS2", "status": "FURIA 16 x 12 NAVI - Vitória em Mirage" },
+    { "jogo": "CS2", "status": "FURIA 8 x 13 FaZe - Derrota em Nuke" },
+    { "jogo": "Valorant", "status": "FURIA 13 x 6 LOUD - Vitória em Ascent" }
+  ],
+  "torcida_simulador": [
+    "🔥 VAMO FURIAAAA! 🔥",
+    "💣 RUSH B É NOSSO! 💣",
+    "🧨 A FURIA NÃO PERDOA! 🧨"
+  ],
+  "noticias": [
+    "FURIA anuncia novo treinador para a line-up de CS2.",
+    "Yuurih atinge maior K/D da temporada.",
+    "Novo uniforme da FURIA será revelado no Major."
+  ],
+  "ranking": [
+    { "nome": "yuurih", "kda": "1.38" },
+    { "nome": "arT", "kda": "1.12" },
+    { "nome": "KSCERATO", "kda": "1.30" },
+    { "nome": "chelo", "kda": "1.05" },
+    { "nome": "fallen", "kda": "1.08" }
+  ]
+}

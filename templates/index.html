@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Chat da FURIA</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #121212;
+      color: #fff;
+      margin: 0;
+    }
+    .chat-container {
+      max-width: 600px;
+      margin: 50px auto;
+      background-color: #1e1e1e;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    }
+    .chat-header {
+      background-color: #111;
+      padding: 15px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 18px;
+      border-bottom: 2px solid #FEDA00;
+    }
+    .clock, .countdown {
+      font-size: 14px;
+      color: #FEDA00;
+    }
+    .chat-box {
+      height: 400px;
+      overflow-y: auto;
+      padding: 15px;
+    }
+    .chat-message {
+      margin: 10px 0;
+    }
+    .user { color: #FEDA00; }
+    .bot { color: #66ff66; }
+    .chat-input {
+      display: flex;
+      padding: 10px;
+      background-color: #222;
+    }
+    input[type="text"] {
+      flex: 1;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+    }
+    button {
+      margin-left: 10px;
+      padding: 10px 20px;
+      background-color: #FEDA00;
+      color: #000;
+      font-weight: bold;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #d4b800;
+    }
+  </style>
+</head>
+<body>
+  <div class="chat-container">
+    <div class="chat-header">
+      <div>
+        💬 Chat da FURIA<br>
+        <span class="countdown" id="countdown">Carregando contagem...</span>
+      </div>
+      <div class="clock" id="clock"></div>
+    </div>
+    <div class="chat-box" id="chat-box"></div>
+    <div class="chat-input">
+      <input type="text" id="user-input" placeholder="Digite sua mensagem...">
+      <button onclick="sendMessage()">Enviar</button>
+    </div>
+  </div>
+
+  <script>
+    const proximoJogo = new Date("{{ proximo_jogo }}");
+
+    function updateClock() {
+      const now = new Date();
+      document.getElementById('clock').textContent =
+        now.toLocaleTimeString('pt-BR');
+    }
+
+    function updateCountdown() {
+      const now = new Date();
+      const diff = proximoJogo - now;
+
+      if (diff <= 0) {
+        document.getElementById('countdown').textContent = "🟢 Jogo ao vivo ou já começou!";
+        return;
+      }
+
+      const horas = Math.floor(diff / 3600000);
+      const minutos = Math.floor((diff % 3600000) / 60000);
+      const segundos = Math.floor((diff % 60000) / 1000);
+
+      document.getElementById('countdown').textContent =
+        `⏰ Próximo jogo em: ${horas}h ${minutos}min ${segundos}s`;
+    }
+
+    setInterval(updateClock, 1000);
+    setInterval(updateCountdown, 1000);
+    updateClock();
+    updateCountdown();
+
+    window.onload = function() {
+      const saudacao = "{{ saudacao }}";
+      if (saudacao) {
+        appendMessage('bot', saudacao);
+      }
+    };
+
+    function appendMessage(sender, message) {
+      const chatBox = document.getElementById('chat-box');
+      const msgDiv = document.createElement('div');
+      msgDiv.classList.add('chat-message');
+      msgDiv.innerHTML = `<strong class="${sender}">${sender === 'user' ? 'Você' : 'FURIA Bot'}:</strong> ${message}`;
+      chatBox.appendChild(msgDiv);
+      chatBox.scrollTop = chatBox.scrollHeight;
+    }
+
+    async function sendMessage() {
+      const input = document.getElementById('user-input');
+      const text = input.value.trim();
+      if (!text) return;
+      appendMessage('user', text);
+      input.value = '';
+
+      const response = await fetch('/chat', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ message: text })
+      });
+
+      const data = await response.json();
+      appendMessage('bot', data.reply);
+    }
+  </script>
+</body>
+</html>
