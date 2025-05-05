@@ -77,13 +77,13 @@ Usuário: "Sim"
 
 ---
 
-## 🧠 Sobre os dados
+## Sobre os dados
 
 Atualmente os dados são mockados para testes locais em `data/mock_data.json`, mas o bot pode ser facilmente adaptado para consumir uma API real de resultados.
 
 ---
 
-## 📌 Roadmap (ideias futuras)
+## Roadmap (ideias futuras)
 
 * [ ] Integração com API oficial de resultados (HLTV, Liquipedia, etc.)
 * [ ] Autenticação de usuários
@@ -92,7 +92,7 @@ Atualmente os dados são mockados para testes locais em `data/mock_data.json`, m
 
 ---
 
-## 🤝 Contribuições
+##  Contribuições
 
 Pull requests são bem-vindos! Sinta-se à vontade para sugerir melhorias ou relatar bugs.
 
@@ -106,4 +106,4 @@ Este projeto é livre para fins educacionais e não tem fins comerciais.
 
 Feito com ❤⃣ por torcedores da FURIA!
 
-Repositório: [https://github.com/joaovitorsrp/furiachatv](https://github.com/joaovitorsrp/furiachatv)
+Repositório: [https://github.com/joaovitorsrp/furiachatv]
