@@ -22,7 +22,7 @@ Repositório oficial: [https://github.com/joaovitorsrp/furiachatv](https://githu
 
 ---
 
-## 🛠️ Como rodar localmente
+## Como rodar localmente
 
 ### 1. Clone o repositório
 
@@ -61,7 +61,7 @@ furiachatv/
 
 ---
 
-## 💡 Exemplos de interação
+## Exemplos de interação
 
 Usuário: "Oi"
 
@@ -98,7 +98,7 @@ Pull requests são bem-vindos! Sinta-se à vontade para sugerir melhorias ou rel
 
 ---
 
-## 📄 Licença
+## Licença
 
 Este projeto é livre para fins educacionais e não tem fins comerciais.
 
